@@ -10,7 +10,7 @@ weight = 4
 # List your academic interests.
 [interests] 
   interests = [ 
-    "Clean Code", 
+    "OO principles", 
     "Design patterns", 
     "Domain Driven Design", 
     "Test Driven Development", 
