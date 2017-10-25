@@ -6,3 +6,5 @@
 - TDD en 5 min
 - Scrum
 - nommage
+- git flow
+- convention de message git
