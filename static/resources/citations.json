@@ -1,0 +1,18 @@
+[
+  "If something is too complex to understand, it must be wrong",
+  "Make It Work, Make It Right, Make It Fast",
+  "Leave the campground cleaner that you found it",
+  "Favor composition over inheritance",
+  "Don't Repeat Yourself",
+  "Code to interface not implementation",
+  "Favor continuous improvement over delayed perfection",
+  "Tests should be fast, reliable and independent",
+  "Your solution should not be more complicated than the problem",
+  "Maximize cohesion, minimize coupling",
+  "Beware of anemic domain models",
+  "One change at a time, one feature at a time",
+  "Write code that humans can easily understand",
+  "Work in small increments",
+  "Testing is a shared responsibility",
+  "Split functionality into small units"
+]

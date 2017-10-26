@@ -17,4 +17,21 @@ weight = 1
   overlay_filter = 0.5  # Darken the image. Value in range 0-1.
 +++
 
-If something is too complex to understand, it must be wrong
+<span id="citation"></span>
+
+<script type="text/javascript">
+  (function defer() {
+    if (window.jQuery) {
+      jQuery(document).ready(function(){
+        displayRandomCitation();
+      });
+    } else {
+      setTimeout(function() { defer() }, 50);
+    }
+  })();  
+  function displayRandomCitation() {
+    $.getJSON('/resources/citations.json').done(function (citations) {
+      $('#citation').text(citations[Math.floor(Math.random() * citations.length)]);
+    });    
+}  
+</script>
