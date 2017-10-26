@@ -48,38 +48,40 @@ Le changement.
 
 Le changement concourt à dédrager le code, tout comme l'évolution d'un système concourt à sa désorganisation. C'est frustrant mais c'est ainsi !
 
-Pour autant, il ne faut pas s'emballer et refaire le monde, il y'a tout de même quelques règles à respecter.
+Pour autant, il ne faut pas s'emballer et refaire le monde, il y a tout de même quelques règles à respecter.
 
 L'idée n'est pas d'attaquer un gros chantier de refactoring et de tout casser, mais de mener cette action au quotidien, avant chaque push sur votre repository.  
 L'amélioration sera lente mais pérenne.  
-D'ailleurs, si vous faite du [Scrum](https://fr.wikipedia.org/wiki/Scrum_(Boite_%C3%A0_outils)), il n'y a pas de sprint dédié à la refactorisation, chaque sprint doit produire de la plus-value fonctionnelle.  
+D'ailleurs, si vous faites du [Scrum](https://fr.wikipedia.org/wiki/Scrum_(Boite_%C3%A0_outils)), il n'y a pas de sprint dédié à la refactorisation, chaque sprint doit produire de la plus-value fonctionnelle.  
 
-Veillez à garder des commits cohérents, n'améliorez uniquement que le code concerné par la la fonctionnalité sur laquelle vous travaillez à cet instant, ne modifiez pas des fichiers sans rapport avec celle-ci.
-Ne vous laissez pas tenter par une amélioration possible si ce n'est pas le moment, notez là (mieux, faite un ticket dans votre tracker), et revenez dessus ultèrieurement.  
+Veillez à garder des commits cohérents, n'améliorez uniquement que le code concerné par la fonctionnalité sur laquelle vous travaillez à cet instant, ne modifiez pas des fichiers sans rapport avec celle-ci.
+Ne vous laissez pas tenter par une amélioration possible si ce n'est pas le moment, notez là (mieux, faites un ticket dans votre tracker), et revenez dessus ultérieurement.  
 
 Ces améliorations ne sont pas nécessairement importantes, cela peut être juste un nom plus adapté pour une classe ou l'extraction d'une méthode.  
 Dans le cas de refactorisations importantes, assurez-vous d'avoir un harnais de tests suffisant (avec une bonne couverture de code).
 
-L'idéal est de faire en amont du [TDD](https://fr.wikipedia.org/wiki/Test_driven_development), dont le principe est :
-
-- Red (test en échec),
-- Green (test ok),
-- Refactor (amélioration du code)
-
-Le TDD laisse la place au "mauvais" code, puis à son amélioration sans risque de régression. 
+Le [TDD](https://fr.wikipedia.org/wiki/Test_driven_development) peut être une méthode efficace d'amélioration continue.
+Ce type de développement laisse la place au "mauvais" code, puis à son amélioration sans risque de régression. 
 J'entends par mauvais, la première version passant les tests, car personne n'écrit d'emblée du bon code.
 
 N'oubliez pas la formule de [Kent Beck](https://fr.wikipedia.org/wiki/Kent_Beck) (entre autre co-développeur de Junit) :  
 
 > Make It Work, Make It Right, Make It Fast.
 
-Pour finir je prendrai l'image de la décharge sauvage.  
+Nous nous arrêtons souvent au premier point de cette formule, sans prendre en considération les suivants.  
+Ce n'est pas parcequ'un code fonctionne qu'il est bon.
+
+Pour finir je prendrais l'image de la décharge sauvage.  
+
+![Décharge sauvage](/img/post/regle-du-boy-scout-decharge.jpg "Décharge sauvage")
+
 Vous savez, celle qui commence par trois canettes et un vieux reste de McDo à l'orée d'un bois...  Et qui finit avec un pneu et une machine à laver.  
 Qui n'a jamais été tenté de faire un fix ou un évolution rapide dont il n'est pas fier, mais qui se dit (honteusement) que de toute façon le code était déjà mauvais avant ? 
-Et je vous l'assure, ce sera de pire en pire...
+Et je vous l'assure, ce sera de pire en pire... Si rien n'est fait, le chaos ne fera que croître, et ce de façon exponentielle.  
+Le désordre appel le désordre et délite la responsabilité.
 
-Le code que j'écris dans le cadre professionel ne m'appartient pas, évidemment il appartient au client, mais ce n'est pas ce que je veux dire.  
+Le code que j'écris dans le cadre professionnel ne m'appartient pas, évidemment il appartient au client, mais ce n'est pas ce que je veux dire.  
 Ce n'est pas MON code, c'est celui de l'application, et tous mes collègues sont libres d'y apporter les améliorations qui leur semble nécessaires.  
-Vous l'aurez compris, je n'aime pas le tag @author. 
 
-Nous sommes tous responsable de la qualité du produit que nous livrons.
+Vous l'aurez compris, je n'aime pas le tag @author,  
+nous sommes tous responsable de la qualité du produit que nous livrons.
