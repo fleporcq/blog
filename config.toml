@@ -12,7 +12,7 @@ paginate = 10
 disqusShortname = "fleporcq"
 
 # Enable analytics by entering your Google Analytics tracking ID
-googleAnalytics = ""
+googleAnalytics = "UA-108808020-1"
 
 # Default language to use (if you setup multilingual support)
 defaultContentLanguage = "en"
