@@ -31,7 +31,7 @@ Dans un monde où [l'entropie](https://fr.wikipedia.org/wiki/Entropie) est la r�
  
 Le système ne pourrait pas se dégrader.  
 
-Bon, ça semble un peu utopique dit comme ça, mais je suis de nature optimiste et certain que si dans une équipe de développement tout le monde adhére à cet état d'esprit, 
+Bon, ça semble un peu utopique dit comme ça, mais je suis de nature optimiste et certain que si dans une équipe de développement tout le monde adhère à cet état d'esprit, 
 le code ne se dégradera pas, ou du moins beaucoup plus lentement.
 
 Beaucoup de choses peuvent imperceptiblement dégrader du code : 
@@ -54,7 +54,7 @@ L'idée n'est pas d'attaquer un gros chantier de refactoring et de tout casser, 
 L'amélioration sera lente mais pérenne.  
 D'ailleurs, si vous faites du [Scrum](https://fr.wikipedia.org/wiki/Scrum_(Boite_%C3%A0_outils)), il n'y a pas de sprint dédié à la refactorisation, chaque sprint doit produire de la plus-value fonctionnelle.  
 
-Veillez à garder des commits cohérents, n'améliorez uniquement que le code concerné par la fonctionnalité sur laquelle vous travaillez à cet instant, ne modifiez pas des fichiers sans rapport avec celle-ci.
+Veillez à garder des commits cohérents, n'améliorez que le code concerné par la fonctionnalité sur laquelle vous travaillez à cet instant, ne modifiez pas des fichiers sans rapport avec celle-ci.
 Ne vous laissez pas tenter par une amélioration possible si ce n'est pas le moment, notez là (mieux, faites un ticket dans votre tracker), et revenez dessus ultérieurement.  
 
 Ces améliorations ne sont pas nécessairement importantes, cela peut être juste un nom plus adapté pour une classe ou l'extraction d'une méthode.  
@@ -78,7 +78,7 @@ Pour finir je prendrais l'image de la décharge sauvage.
 Vous savez, celle qui commence par trois canettes et un vieux reste de McDo à l'orée d'un bois...  Et qui finit avec un pneu et une machine à laver.  
 Qui n'a jamais été tenté de faire un fix ou un évolution rapide dont il n'est pas fier, mais qui se dit (honteusement) que de toute façon le code était déjà mauvais avant ? 
 Et je vous l'assure, ce sera de pire en pire... Si rien n'est fait, le chaos ne fera que croître, et ce de façon exponentielle.  
-Le désordre appel le désordre et délite la responsabilité.
+Le désordre appelle le désordre et délite la responsabilité.
 
 Le code que j'écris dans le cadre professionnel ne m'appartient pas, évidemment il appartient au client, mais ce n'est pas ce que je veux dire.  
 Ce n'est pas MON code, c'est celui de l'application, et tous mes collègues sont libres d'y apporter les améliorations qui leur semble nécessaires.  
