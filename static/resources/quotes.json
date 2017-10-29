@@ -1,0 +1,19 @@
+[
+  {"quote" : "If something is too complex to understand, it must be wrong", "author":""},
+  {"quote" : "Make It Work, Make It Right, Make It Fast", "author":""},
+  {"quote" : "Leave the campground cleaner that you found it", "author":""},
+  {"quote" : "Favor composition over inheritance", "author":""},
+  {"quote" : "Don't Repeat Yourself", "author":""},
+  {"quote" : "Code to interface not implementation", "author":""},
+  {"quote" : "Favor continuous improvement over delayed perfection", "author":""},
+  {"quote" : "Tests should be fast, reliable and independent", "author":""},
+  {"quote" : "Your solution should not be more complicated than the problem", "author":""},
+  {"quote" : "Maximize cohesion, minimize coupling", "author":""},
+  {"quote" : "Beware of anemic domain models", "author":""},
+  {"quote" : "One change at a time, one feature at a time", "author":""},
+  {"quote" : "Write code that humans can easily understand", "author":""},
+  {"quote" : "Work in small increments", "author":""},
+  {"quote" : "Testing is a shared responsibility", "author":""},
+  {"quote" : "Split functionality into small units", "author":""},
+  {"quote" : "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live", "author":""}
+]

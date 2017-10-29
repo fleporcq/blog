@@ -17,21 +17,25 @@ weight = 1
   overlay_filter = 0.5  # Darken the image. Value in range 0-1.
 +++
 
-<span id="citation"></span>
+<span id="quote"></span>&nbsp;<small id="author"></small>
 
 <script type="text/javascript">
   (function defer() {
     if (window.jQuery) {
       jQuery(document).ready(function(){
-        displayRandomCitation();
+        displayRandomQuote();
       });
     } else {
       setTimeout(function() { defer() }, 50);
     }
   })();  
-  function displayRandomCitation() {
-    $.getJSON('/resources/citations.json').done(function (citations) {
-      $('#citation').text(citations[Math.floor(Math.random() * citations.length)]);
+  function displayRandomQuote() {
+    $.getJSON('/resources/quotes.json').done(function (quotes) {
+      var quote = quotes[Math.floor(Math.random() * quotes.length)];
+      $('#quote').text(quote.quote);
+      if(quote.author != ""){
+        $('#author').text("- " + quote.author);
+      }
     });    
 }  
 </script>
