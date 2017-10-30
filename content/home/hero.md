@@ -17,7 +17,8 @@ weight = 1
   overlay_filter = 0.5  # Darken the image. Value in range 0-1.
 +++
 
-<span id="quote"></span>&nbsp;<small id="author"></small>
+<span id="quote"></span><br>
+<small id="author"></small>
 
 <script type="text/javascript">
   (function defer() {
@@ -33,9 +34,7 @@ weight = 1
     $.getJSON('/resources/quotes.json').done(function (quotes) {
       var quote = quotes[Math.floor(Math.random() * quotes.length)];
       $('#quote').text(quote.quote);
-      if(quote.author != ""){
-        $('#author').text("- " + quote.author);
-      }
+      $('#author').text(quote.author);
     });    
 }  
 </script>
