@@ -93,13 +93,12 @@ Ce sont ce qu'on pourrait appeler des tests de haut niveau.
 *D'autre tests de ce genre vont jusqu'à reproduire automatiquement le comportement d'un utilisateur directement depuis un navigateur 
 (cf. [Selenium](https://fr.wikipedia.org/wiki/Selenium_(informatique))).*
 
-Est-ce que les tests fonctionnels sont intrinsèquement mauvais ?  
+**Est-ce que les tests fonctionnels sont intrinsèquement mauvais ?**  
 Je ne pense pas. 
 
-Ils peuvent être très adaptés dans le cas d'une api rest.  
-Cependant ils sont insuffisants, arrivaient beaucoup trop tôt dans ma réflexion 
-et mon implémentation était certainement très maladroite. 
+Ils peuvent être très adaptés pour tester les retours d'une api rest, ou dans le test d'interfaces.
+Mais pas pour une couche métier.
 
-Retour à la case départ, je devais trouver un socle de test plus adapté à mon besoin.
+Retour à la case départ, je devais trouver un socle de test plus en adéquation avec à mon besoin.
 
 La suite au prochain post.
