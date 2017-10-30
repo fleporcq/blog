@@ -17,7 +17,7 @@ npm install -g firebase-tools
 firebase login
 
 # Création de l'alias hosting
-firebase use clean-code-52d07
+firebase use revue-de-code
 
 # Déploiement sur firebase
 hugo && firebase deploy

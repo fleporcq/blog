@@ -1,6 +1,6 @@
 baseurl = "/"  # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
-title = "Expressive Code"
-copyright = "&copy; 2017 Expressive Code"
+title = "Revue de code"
+copyright = "&copy; 2017 Revue de code"
 theme = "academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
@@ -39,7 +39,7 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "François Leporcq"
-  role = "Lead Dev & Scrum Master"
+  role = "Lead Dev && Scrum Master"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
