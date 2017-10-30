@@ -1,7 +1,7 @@
 ---
 title: "Rencontre avec les tests"
 date: 2017-10-27T13:45:57+02:00
-draft: true
+draft: false
 tags: ["tests"]
 ---
 
@@ -14,7 +14,7 @@ Une question stupide m'a traversé l'esprit.
 
 > Oui mais alors, comment tester le code qui teste le code ?  
 
-Puis j'ai été séduit par l'idée.  
+Enfin, j'ai été séduit par l'idée.  
 
 Ok, j'en avais compris les intérêts dans les grandes lignes : 
 
@@ -26,12 +26,12 @@ Ok, j'en avais compris les intérêts dans les grandes lignes :
  - rentrer chez soi avec la satisfaction d'un travail abouti. 
 
 Il ne restait plus qu'à la mettre en pratique. 
-Je me suis alors jeté dans le grand bain, sans expérience et sans réel approfondissement du sujet. Erreur, que je paierai rapidement.
+Je me suis alors jeté dans le grand bain, sans expérience et sans réel approfondissement du sujet.  
+Erreur, que je paierai rapidement.
 
 ![Failed](https://media.giphy.com/media/rjr9etfxrdP3i/giphy.gif "Failed")
 
 J'ai été très vite confronté à des problèmes divers qui ralentissaient considérablement ma capacité à produire le "vrai" code.  
-Une phrase revenait souvent dans l'open-space :  
 
 > J'ai pas le temps de faire des tests, on devrait les inclure à nos chiffrages.
 
@@ -41,64 +41,67 @@ Certes, les tests prennent du temps, mais, correctement implémentés, en font g
 
 ## Mes erreurs
 
-J'ai pu rencontrer, lors de conférences, des développeurs emballés par les tests.  
+J'ai pu rencontrer, lors de conférences, des développeurs manifestement conquis par les tests. 
 Il était évident que j'étais passé à côté de quelque chose.
 
 Ma première erreur était de ne pas avoir choisi le bon type de tests pour commencer.  
 
-L'idée semblait pourtant plutôt bonne. Comme nous avons peu de temps, nous allons traverser la stack de bout en bout pour la tester dans son intégralité.
+L'idée semblait pourtant plutôt bonne.  
+Comme j'ai peu de temps, je vais traverser la stack de bout en bout pour la tester dans son intégralité.
 D'où la création de tests qui lanceraient des requêtes http et feraient des assertions sur le contenu retourné. 
-Si le contenu retourné est celui attendu, nous extrapolons le fait que les couches intermédiaire ont correctement fonctionnées.  
-Génial !  
-Pas tant que ça...
+Si le contenu retourné est celui attendu, j'extrapole le fait que les couches intermédiaires ont correctement fonctionnées. 
+Génial ! Pas tant que ça...
 
-Ce type de test est appelé tests fonctionnels car ils s'emploient à vérifier le bon fonctionnement général d'une application 
-tel que la voit un utilisateur. 
+Ce type de tests est appelé tests fonctionnels car ils s'emploient à vérifier le bon fonctionnement général d'une application 
+tel que le ferait un humain.  
 Ce sont ce qu'on pourrait appeler des tests de haut niveau.  
-D'autre tests de ce type (voir [Selenium](https://fr.wikipedia.org/wiki/Selenium_(informatique))) vont jusqu'à reproduire automatiquement le comportement 
-d'un utilisateur directement dans le navigateur.
+D'autre tests de ce genre vont jusqu'à reproduire automatiquement le comportement d'un utilisateur directement depuis un navigateur 
+(cf. [Selenium](https://fr.wikipedia.org/wiki/Selenium_(informatique))).
 
 Premiers points génants :  
 
-- ça ne peut s'appliquer qu'à un environnemnt web, 
-- si je veux réutiliser ma couche métier dans un autre projet,  
-  je n'ai plus aucun test.
+- Ca ne peut s'appliquer qu'à un environnemnt web, 
+- si je veux réutiliser la couche métier dans un autre projet,    
+  je n'ai plus aucun test,
+- les données d'entrées ne peuvent être envoyées que par http,
+- les assertions sont complexes à réaliser car je dois au préalable parser le retour html.
 
-Ensuite, comme nous traversons l'ensemble de la stack, il faut que toutes les couches soient présentes.  
-L'environnement de test étant différent des environnements d'exécution "normal" (dev,prod,...), nous devons simuler certaines couches (les mocker).  
-Par exemple, dans mon cas, la session utilisateur.
+Ensuite, comme l'ensemble de la stack est traversé, il faut que toutes les couches soient présentes. 
+L'environnement de test n'étant pas un environnement d'exécution "normal" (comme dev ou prod), je dois simuler certaines couches (cf. [mock](https://fr.wikipedia.org/wiki/Mock_(programmation_orient%C3%A9e_objet))). 
+Dans mon cas, par exemple, la session utilisateur.
 
-Comme pour tout type de test, pour pouvoir faire des assertions correctes, il va falloir maîtriser le jeu de données initiales.
-Or, avec les tests fonctionnels, je n'ai pas d'accès direct à la couche métier, 
-je vais être obligé de créer une base données spécifique à l'environnement de test. 
+Pour pouvoir faire des assertions correctes, il faut également maîtriser le jeu de données initiales.
+Or, avec les tests fonctionnels, je n'ai pas d'accès direct à la couche métier. 
+Je suis obligé de créer une base données spécifique à l'environnement de test. 
 
-Avant d'avoir commencer, on voit déjà beacoup de pré-requis apparaîtrent.
+Avant d'avoir commencer, on voit déjà beaucoup de complications apparaîtrent.
 
-Nous avons donc mis en place une base de données mémoire ([H2](https://fr.wikipedia.org/wiki/H2_(base_de_donn%C3%A9es))).
+J'ai donc mis en place une base de données mémoire qui à le mérite d'être volatile et extrèmement rapide. (cf. [H2](https://fr.wikipedia.org/wiki/H2_(base_de_donn%C3%A9es))).
 
-Un autre problème est alors très rapidement apparu, les données de test étant centralisées dans une base de données, 
+Un autre problème est alors très rapidement apparu. Les données de test étant centralisées dans une base de données, 
 elles devenaient communes à l'ensemble des tests. 
-Un test qui modifiait l'état de cette base, impactait directement les tests suivants.
+Un test qui modifiait l'état de cette base, impactait directement les tests suivants ! 
 
-On a donc du mette en place un système réinitialisant le jeu de données à chaque test. C'est bourrin et très inefficace !
-Malgré cette réinitialisation systèmatique des données, nos tests étaient toujours très dépendants les uns des autres.
-L'insertion de données initiales dans la base impactait directement l'ensemble de nos tests.
+J'ai donc du réinitialiser la base de données avant chaque test. C'est bourrin et très inefficace !
+Malgré cette réinitialisation systèmatique des données, mes tests étaient toujours très dépendants les uns des autres.
+L'insertion de données initiales dans la base impactait également l'ensemble des tests.
 
 Il devenait très compliqué de modifier ou d'ajouter un test.
 
-**L'environnement de tests doit ête simple, l'ajout d'un test doit être une opération triviale et rapide.   
-Si ce n'est pas le cas, vous constaterez un désengagement des développeurs à maintenir et à faire évoluer les tests.**
+**L'environnement de tests doit être simple à mettre oeuvre, l'ajout d'un test doit être une opération triviale et rapide. 
+Si ce n'est pas le cas, vous constaterez un désengagement des développeurs à les maintenir et à les faire évoluer.**
 
-Notre package de tests est devenu peu à peu une ville fantôme où n'erraient plus que quelques âmes en peine.
+Le package 'tests' est devenu peu à peu une ville fantôme où n'erraient plus que quelques âmes en peine.
 
 ![Far west](https://media.giphy.com/media/W0KiMlQIj4nzq/giphy.gif "Far west")
 
-Je devais trouver un socle de test plus simple.
-
 Est-ce que les tests fonctionnels sont une mauvaise chose ?  
-Je ne pense pas.  
+Je ne pense pas. 
 
+Ils peuvent être très adaptés dans le cas d'une api rest.  
 Cependant ils sont insuffisants, arrivaient beaucoup trop tôt dans ma réflexion 
 et mon implémentation était certainement très maladroite. 
+
+Retour à la case départ, je devais trouver un socle de test plus simple.
 
 La suite au prochain post.
