@@ -21,6 +21,8 @@ Nom du site :
 - definition of done
 - Nous ne sommes pas des auteurs (mais des contributeurs)
 - Soyez critiques
+- Definition of done
+- event sourcing
 - pour le post sur la regle du boy-scout :
     - parler du cout de la dette technique à rembourser
     http://www.defprogramming.com/quotes-by/martin-golding/
@@ -50,6 +52,7 @@ non naturel d'un premier abord.
 
 https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing
 
+ - les tests était dépendant d'une base de données à priori inutile pour le fonctionnement de la couche métier
  - modèle AAA Arrange, Act, Assert
      - Arrange all necessary preconditions and inputs.
      - Act on the object or method under test.
