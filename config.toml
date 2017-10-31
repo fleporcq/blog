@@ -175,9 +175,9 @@ defaultContentLanguageInSubdir = false
   #  link = "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
 
   [[params.social]]
-    icon = "github"
+    icon = "twitter"
     icon_pack = "fa"
-    link = "//github.com/fleporcq"
+    link = "//twitter.com/revuedecode"
   [[params.social]]
     icon = "stack-overflow"
     icon_pack = "fa"
