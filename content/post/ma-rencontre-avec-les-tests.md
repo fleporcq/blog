@@ -99,6 +99,6 @@ Je ne pense pas.
 Ils peuvent être très adaptés pour tester les retours d'une api rest, ou dans le test d'interfaces.
 Mais pas pour une couche métier.
 
-Retour à la case départ, je devais trouver un socle de test plus en adéquation avec à mon besoin.
+Retour à la case départ, je devais trouver un socle de test plus en adéquation avec mon besoin.
 
 La suite au prochain post.
