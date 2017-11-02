@@ -37,7 +37,7 @@ J'ai été très vite confronté à des problèmes divers qui ralentissaient con
 
 Echec total, renoncement, rejet d'un concept qui semblait prometteur.
 
-**Certes, les tests prennent du temps, mais, correctement implémentés, en font gagner beaucoup plus.**
+**Certes les tests prennent du temps, mais correctement implémentés, en font gagner beaucoup plus.**
 
 ## Mes erreurs
 
@@ -68,7 +68,7 @@ Enfin, pour pouvoir faire des assertions correctes, il faut également maîtrise
 Or, je n'ai pas d'accès direct à la couche métier. 
 Je suis donc dans l'obligation de créer une base de données spécifique à l'environnement de test. 
 
-Avant d'avoir commencer, on voit déjà beaucoup de complications apparaîtrent.
+Avant d'avoir commencé, on voit déjà beaucoup de complications apparaîtrent.
 
 Une fois l'environnement en place, un autre problème est rapidement apparu. Les données de test étant centralisées dans une base de données, 
 elles devenaient communes à l'ensemble des tests. 
