@@ -49,15 +49,15 @@ L'idée m'avait semblée pourtant bonne.
 > Comme j'ai peu de temps, je vais traverser la stack de bout en bout pour la tester dans son intégralité.  
 
 D'où la création de tests qui lanceraient des requêtes http et feraient des assertions sur le contenu retourné. 
-Si le contenu retourné est celui attendu, j'extrapole le fait que les couches intermédiaires ont correctement fonctionnées. 
+Si le contenu retourné est celui attendu, j'extrapole le fait que les couches intermédiaires ont correctement fonctionnés. 
 Génial ! Pas tant que ça...
 
 Premiers points génants :  
 
-- Ca ne peut s'appliquer qu'à un environnemnt web, 
+- ça ne peut s'appliquer qu'à un environnement web, 
 - si je veux réutiliser la couche métier dans un autre projet,    
   je n'ai plus aucun test,
-- les données d'entrées ne peuvent être envoyées que par http,
+- les données d'entrée ne peuvent être envoyées que par http,
 - les assertions sont complexes à réaliser car je dois au préalable parser le retour html.
 
 De plus, comme l'ensemble de la stack est traversé, il est indispensable que toutes les couches soient présentes. 
@@ -66,7 +66,7 @@ Dans mon cas, par exemple, la session utilisateur.
 
 Enfin, pour pouvoir faire des assertions correctes, il faut également maîtriser le jeu de données initiales.
 Or, je n'ai pas d'accès direct à la couche métier. 
-Je suis donc dans l'obligation de créer une base données spécifique à l'environnement de test. 
+Je suis donc dans l'obligation de créer une base de données spécifique à l'environnement de test. 
 
 Avant d'avoir commencer, on voit déjà beaucoup de complications apparaîtrent.
 
@@ -80,7 +80,7 @@ L'insertion de données initiales dans la base impactait également l'ensemble d
 
 Il devenait très compliqué de modifier ou d'ajouter un test.
 
-**L'environnement de tests doit être simple à mettre oeuvre, l'ajout d'un test doit être une opération triviale et rapide. 
+**L'environnement de test doit être simple à mettre oeuvre, l'ajout d'un test doit être une opération triviale et rapide. 
 Si ce n'est pas le cas, vous constaterez un désengagement des développeurs à les maintenir et à les faire évoluer.**
 
 Le package "tests" est devenu peu à peu une ville fantôme où n'erraient plus que quelques âmes perdues.
