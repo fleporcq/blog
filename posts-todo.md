@@ -7,7 +7,7 @@ Nom du site :
 - revue de code
 ## Contenu
 - Biographie
-
+- Idées reçus sur l'agile
 - Principe ouvert fermé
 - Principes SOLID
 - Post traitant sur le passage/retour de null 
@@ -18,8 +18,7 @@ Nom du site :
 - git flow
 - convention de message git
 - modèles anémiques
-- definition of done
-- Nous ne sommes pas des auteurs (mais des contributeurs)
+- save dans les controlleurs (séparation de la couche métier de la couche technique DDD)
 - Soyez critiques
 - Definition of done
 - event sourcing
@@ -46,37 +45,27 @@ mon code était difficilement testable.
 non naturel d'un premier abord.
 
 
-### FIRST
+Another mental picture—programming is like exploring a dark house. You go from
+room to room to room. Writing the test is like turning on the light. Then you can avoid
+the furniture and save your shins (the clean design resulting from refactoring). Then
+you’re ready to explore the next room
 
-### AAA
-
-https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing
-
- - les tests était dépendant d'une base de données à priori inutile pour le fonctionnement de la couche métier
- - modèle AAA Arrange, Act, Assert
-     - Arrange all necessary preconditions and inputs.
-     - Act on the object or method under test.
-     - Assert that the expected results have occurred.
- - on ne peut pas tout tester
- - faire un choix sur le type de test
- - test expressif -> fluent -> BDD / DDD (Réponse au TDD)
- - limites des test
- - tester les bornes du système
- - Test Driven Development: By Example - Kent Beck
- - différent type de test unitaire/fonctionnel/behavior/accceptance
- - je n'écrivais pas du code testable
- - qualité / assurance
- - non régression
- - couverture de code (règle de non diminution de ce taux, hook)
- - rassurant
- - les tests sont l'affaire de tous
- - definition of done
- - FIRST FAST, ISOLATED/INDEPENDENT, REPEATABLE, SELF-VALIDATING and THOROUGH/TIMELY
- - Red/Green/Refactor
- - on n'écrit pas du test comme du code (valeur attendu en dur ?)
- - amélioration continue
+Test-driven development (TDD) is a way of managing fear during programming. I
+don’t mean fear in a bad way, pow widdle prwogwammew needs a pacifiew, but fear
+in the legitimate, this-is-a-hard-problem-and-I-can’t-see-the-end-from-the-beginning
+sense. If pain is nature’s way of saying “Stop!”, fear is nature’s way of saying “Be
+careful.” The problem is that fear has a host of other effects:
+• Makes you tentative
+• Makes you grumpy
+• Makes you want to communicate less
+• Makes you shy from feedback
 
 
 
-##  Platforme
-- Ajouter les auteurs des citations aléatoire du hero
+WHAT’S A CODE SMELL? A smell in code is a hint that something might be
+wrong with the code. To quote the Portland Pattern Repository’s Wiki, “If
+something smells, it definitely needs to be checked out, but it may not actually
+need fixing or might have to just be tolerated.”
+
+
+Faire un lien de ma rencontre avec les tests vers cet article.
