@@ -1,6 +1,6 @@
 ---
 title: "Voyons petit, voyons unitaire"
-date: 2017-11-01T11:55:23+01:00
+date: 2017-11-07T14:30:00+01:00
 draft: false
 tags: ["tests"]
 ---
@@ -14,7 +14,7 @@ Pour commencer ce voyage initiatique, j'allais devoir retourner aux origines.
 
 ## Les légendaires tests unitaires ! 
 
-Tout le monde en parle mais que sont-ils réélement ?
+Tout le monde en parle mais que sont-ils réellement ?
 
 Ils ont été popularisés par [Kent Beck](https://fr.wikipedia.org/wiki/Kent_Beck) et [Erich Gamma](https://fr.wikipedia.org/wiki/Erich_Gamma) avec la création du framework JUnit en 1997. 
 Puis remis au goût du jour avec les méthodes eXtreme Programming et Test Driven Development.
@@ -145,6 +145,7 @@ Evitez les étapes de démontage qui peuvent masquer un problème de dépendance
 
 Un test doit être déterministe. 
 Le résultat doit toujours être le même quelque soit l'environnement et l'instant.
+Il ne devrait pas être nécessaire d'avoir un environnement spécifique aux tests.
 Chaque test doit préparer ses propres données d'entrée. 
 Créez une méthode utilitaire si vous avez besoin de mutualiser leur création mais ne les centralisez pas.
 
@@ -160,7 +161,7 @@ En pratique vous pouvez écrire des tests n'importe quand, mais le plus tôt ser
 
 Comme je l'ai déjà exposé, un bon test doit avoir des dépendances minimales. 
 Si un test en a beaucoup, demandez-vous si elles sont légitimes et remettez votre code en question.
-Si ces dépendances sont justifiées, essayez de vous en abstraire au maxium. 
+Si ces dépendances sont justifiées, essayez de vous en abstraire au maximum. 
 Un test doit vérifier le bon fonctionnement d'un objet, pas de ses dépendances. 
 Gardez vos dépendances sous contrôle de vos tests en les simulant à travers d'instances que vous créez dans vos tests 
 ou de [mocks](https://fr.wikipedia.org/wiki/Mock_(programmation_orient%C3%A9e_objet)) si ce n'est pas possible.
@@ -190,7 +191,7 @@ Voici ce qu'en dit Kent Beck sur Stack Overflow :
 ## Mot de la fin
          
 Ne sous-estimez pas vos tests. Ils doivent mériter la même attention que votre code et doivent être expressifs.
-Si l'ajout d'un test n'est pas une opération triviale, remettez en question votre environnement et votre code.
+Si l'ajout d'un test n'est pas une opération triviale, n'hésitez pas à remettre en question votre code.
 
 **Votre code doit être facilement testable, pensez :**
 
