@@ -101,4 +101,4 @@ Mais pas pour une couche métier.
 
 Retour à la case départ, je devais trouver un socle de test plus en adéquation avec mon besoin.
 
-La suite au prochain post.
+[Je devais voir plus petit.]({{< ref "post/voyons-petit-voyons-unitaire.md" >}})

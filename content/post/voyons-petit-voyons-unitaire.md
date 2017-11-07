@@ -1,7 +1,7 @@
 ---
 title: "Voyons petit, voyons unitaire"
 date: 2017-11-01T11:55:23+01:00
-draft: true
+draft: false
 tags: ["tests"]
 ---
 
@@ -14,13 +14,13 @@ Pour commencer ce voyage initiatique, j'allais devoir retourner aux origines.
 
 ## Les légendaires tests unitaires ! 
 
-Tout le monde en parle mais qui sont-ils réélement ?
+Tout le monde en parle mais que sont-ils réélement ?
 
-Ils ont été popularisés par Kent Beck et Erich Gamma avec la création du framework JUnit en 1997. 
+Ils ont été popularisés par [Kent Beck](https://fr.wikipedia.org/wiki/Kent_Beck) et [Erich Gamma](https://fr.wikipedia.org/wiki/Erich_Gamma) avec la création du framework JUnit en 1997. 
 Puis remis au goût du jour avec les méthodes eXtreme Programming et Test Driven Development.
 
-Malgré son apparente simplicité, le concept de test unitaire n'est pas facile à définir. 
-Beaucoup de développeurs se font leur propre idée de ce qu'est un test unitaire.
+Malgré son apparente simplicité, le test unitaire n'est pas facile à définir. 
+Beaucoup de développeurs se font leur propre idée de ce qu'ils sont.
 
 Cependant, tout le monde s'accorde pour dire qu'un test est un procédé s'assurant du bon fonctionnement d'un traitement.
 
@@ -42,13 +42,13 @@ En POO, de quoi est composée une application ?
  - de variables.
 
 Nous n'allons évidemment pas tester une variable car elle n'embarque aucune logique ni traitement. 
-Quand au package, il parait trop vaste, sa propre existence est liée à la notion de regroupement.  
+Quant au package, il parait trop vaste, sa propre existence est liée à la notion de regroupement.  
 
 **Une unité peut donc être soit une classe soit une méthode, c'est une question de point de vue.**
 
 Et ce débat fait rage parmi les développeurs.
 
-Selon Martin Fowler (Auteur reconnu dans la conception logicielle et ami de Kent Beck)
+Selon [Martin Fowler](https://fr.wikipedia.org/wiki/Martin_Fowler)
 
 > (...)Despite the variations, there are some common elements. 
   Firstly there is a notion that unit tests are low-level, focusing on a small part of the software system. 
@@ -68,14 +68,14 @@ On peut en retenir :
 Un test unitaire est un procédé de bas niveau écrit par les développeurs, s'éxecutant rapidement et s'assurant du bon fonctionnement d'une petite partie d'un système.
 {{% /alert %}}
 
-*Dans le context qui m'intéresse, j'ai fait le choix qu'une classe de test était associée au test d'une classe métier (entité ou service), 
+*Dans le contexte qui m'intéresse, j'ai fait le choix qu'une classe de test était associée au test d'une classe métier (entité ou service), 
 et qu'un test ne vérifiait le bon fonctionnement que d'une seule de ses méthodes.*
 
 ## Le modèle AAA 
 
 Maintenant que nous avons une vision assez bonne de ce qu'est un test unitaire, comment l'écrire correctement ?
 
-Arrange/Act/Assert (AAA) est un modèle pour organiser son code dans une méthode de test unitaire.
+**Arrange/Act/Assert** (AAA) est un modèle pour organiser son code dans une méthode de test unitaire.
 
 L'idée est de développer un test unitaire en suivant ces 3 étapes simples : 
 
@@ -88,7 +88,7 @@ L'idée est de développer un test unitaire en suivant ces 3 étapes simples :
    
 Voici un exemple volontairement simpliste avec le test de la méthode pow (puissance) de la class Math de java.
    
-```
+```java
 @Test
 public void testPow() {
     // Arrange
@@ -102,75 +102,100 @@ public void testPow() {
     assertEquals(8d, result);
 }
 ```
-On trouve également le modèle Four Phase Test : 
+On trouve également le modèle **Four Phase Test** : 
 
 - Setup
 - Exercise
 - Verify
 - Teardown
  
-Les 3 premiers points reprennent exactement la même idée que le modèle AAA. 
-Mais le dernier point "Teardown" (démontage) me dérange.
-Cette étape de démontage sert à remettre le système dans l'état dans lequel il était avant l'exécution du test.  
+Les 3 premiers points reprennent exactement les mêmes idées que le modèle AAA. 
+Le dernier point "Teardown" est une étape de démontage permettant de remettre le système dans l'état dans lequel il était avant l'exécution du test. 
 
-- Si mon test influe sur l'état du système, est-ce toujours un test unitaire, n'est ce pas un test d'intégration ?  
-- Si mon test échoue ou plante, mon étape de démontage risque de ne pas être exécutée et pourra laisser mon système dans un état incertain.  
-- Si je me trouve dans l'incapacité d'écrire un test unitaire isolé du reste du système, n'ai je pas un problème de couplage ?  
+Celui-ci me dérange beaucoup. Je trouve ça dangereux et compliqué qu'un simple test unitaire influe sur l'état global de mon système. 
+Et si mon test échoue ou plante, l'étape de démontage risque de ne pas être exécutée et pourra laisser mon système dans un état incertain.  
+
+{{% alert note %}}
+**Si vous êtes obligé de réinitialiser l'état de votre système après l'éxecution d'un test unitaire, remettez en cause votre test, vos données d'entrée et votre code.**
+
+- Suis-je vraiment obligé de le faire ?
+- Ne suis-je pas en train d'écrire un test d'intégration ?
+- N'ai-je pas une dépendance maladroite ?
+{{% /alert %}}
+ 
 
 ## Les principes FIRST
 
-FIRST
+Voici quelques bonnes pratiques à respecter.  
+Ces 5 principes peuvent constituer la base d'une checklist pour l'écriture d'un bon test unitaire. 
 
-- **Fast**
-- **Isolated (Independent)**
-- **Repeatable**
-- **Self-verifying**
-- **Timely (Thorough)**
+### Fast  
+
+Un test unitaire se doit d'être rapide (quelque ms). 
+Un développeur ne doit jamais hésiter à lancer les tests car ils sont trop long.
+La suite de tests doit pouvoir être lancée à chaque commit en intégration, voir à chaque sauvegarde en développement.
+
+### Isolated
+
+Les tests doivent pouvoir être exécutés dans n'importe quel ordre. 
+Un test doit pouvoir être lancé individuellement.
+Evitez les étapes de démontage qui peuvent masquer un problème de dépendance centralisée (comme une base de données).
  
+### Repeatable
+
+Un test doit être déterministe. 
+Le résultat doit toujours être le même quelque soit l'environnement et l'instant.
+Chaque test doit préparer ses propres données d'entrée. 
+Créez une méthode utilitaire si vous avez besoin de mutualiser leur création mais ne les centralisez pas.
+
+### Self-verifying
+
+Aucune étape manuelle ne doit être nécessaire pour déterminer si le test à réussi ou échoué.
+
+### Timely
+
+En pratique vous pouvez écrire des tests n'importe quand, mais le plus tôt sera le mieux.
+
+## Et mes dépendances ?
+
+Comme je l'ai déjà exposé, un bon test doit avoir des dépendances minimales. 
+Si un test en a beaucoup, demandez-vous si elles sont légitimes et remettez votre code en question.
+Si ces dépendances sont justifiées, essayez de vous en abstraire au maxium. 
+Un test doit vérifier le bon fonctionnement d'un objet, pas de ses dépendances. 
+Gardez vos dépendances sous contrôle de vos tests en les simulant à travers d'instances que vous créez dans vos tests 
+ou de [mocks](https://fr.wikipedia.org/wiki/Mock_(programmation_orient%C3%A9e_objet)) si ce n'est pas possible.
+
  
- 
-## Et mes dépendances ?
- 
- https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing
+## La couverture
 
+La couverture de test est le taux de code couvert par les tests.
+Plus ce taux est élevé mieux c'est. Bien sûr, on aurait envie de courir après le 100%. Mais est-ce nécessaire ?
+Et même atteint, mon code est-il vraiment testé dans tous les cas possibles ? Bien sûr que non.  
 
+Alors quel est le bon taux ?
+Pour ma part, je pense qu'il doit simplement augmenter avec le temps.
+N'essayez pas de couvrir votre application en entier dès le début, faite le par petits incréments successifs.
+Dans un premier temps vous pouvez vous focaliser sur les parties de votre application que vous jugez les plus critiques ou qui ont le plus de valeur ajoutée.
+Quand un bug est remonté dans votre tracker, vous pouvez le couvrir par un test supplémentaire.  
+Et si vous atteignez 75%, vous pouvez déjà être fier de vous ! 
 
+Lorsque vous écrivez un test, vous pouvez utiliser des données d'entrée arbitraires, mais n'oubliez pas les valeurs remarquables (tout de suite je pense à la division par 0) ainsi que les bornes de votre système.
 
+Voici ce qu'en dit Kent Beck sur Stack Overflow : 
 
+> I get paid for code that works, not for tests, so my philosophy is to test as little as possible to reach a given level of confidence (...)[^2]
 
-https://stackoverflow.com/questions/153234/how-deep-are-your-unit-tests/153565#153565
+[^2]: https://stackoverflow.com/questions/153234/how-deep-are-your-unit-tests/153565#153565
 
-I get paid for code that works, not for tests, so my philosophy is to test as little as possible to reach a given level of confidence ...
-Kent Beck
+## Mot de la fin
+         
+Ne sous-estimez pas vos tests. Ils doivent mériter la même attention que votre code et doivent être expressifs.
+Si l'ajout d'un test n'est pas une opération triviale, remettez en question votre environnement et votre code.
 
-un test doit être expressif  comme le code
+**Votre code doit être facilement testable, pensez :**
 
-unitaire = Différent test d'intégration
-si l'ajout d'un test n'est pas une opération triviale, remettez en question votre environnement de test et votre code.
+> Design for testability
 
-Another mental picture—programming is like exploring a dark house. You go from
-room to room to room. Writing the test is like turning on the light. Then you can avoid
-the furniture and save your shins (the clean design resulting from refactoring). Then
-you’re ready to explore the next room
+Nous verrons dans un prochain article qu'une méthode de développement en particulier ([TDD](https://fr.wikipedia.org/wiki/Test_driven_development)) 
+peut grandement nous aider à concevoir du code facilement testable.
 
-Test-driven development (TDD) is a way of managing fear during programming. I
-don’t mean fear in a bad way, pow widdle prwogwammew needs a pacifiew, but fear
-in the legitimate, this-is-a-hard-problem-and-I-can’t-see-the-end-from-the-beginning
-sense. If pain is nature’s way of saying “Stop!”, fear is nature’s way of saying “Be
-careful.” The problem is that fear has a host of other effects:
-• Makes you tentative
-• Makes you grumpy
-• Makes you want to communicate less
-• Makes you shy from feedback
-
-un test doit être déterministe
-
-WHAT’S A CODE SMELL? A smell in code is a hint that something might be
-wrong with the code. To quote the Portland Pattern Repository’s Wiki, “If
-something smells, it definitely needs to be checked out, but it may not actually
-need fixing or might have to just be tolerated.”
-
-1 cas de test par méthode
-Design for testability
-
-Faire un lien de ma rencontre avec les tests vers cet article.
